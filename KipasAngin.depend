@@ -873,3 +873,7 @@
 1526093414 c:\program files\codeblocks\mingw\x86_64-w64-mingw32\include\gl\glu.h
 	<GL/gl.h>
 
+1666102354 source:d:\kuliah\3\mk\grafika komputer\tugas\kelompok_4_kipasangin\main.cpp
+	<windows.h>
+	<GL/glut.h>
+
