@@ -107,3 +107,58 @@
          glTranslatef(0.0,0.0,10);
          glRotatef(90,1.0,0.0,0.0);
      //turn left-right for fan head  10/9/2003
+    
+
+//lukman awal
+//E1E121004 LA ODE LUKMANA
+    // definisikan kondisi pergerakan penolehan
+     if ( Toleh==true)
+     {
+     if(Turn >= 60)      // max degrees right
+        RightTurn =false;
+     if(Turn <=-60)  // max degrees left
+        RightTurn =true;
+     if(RightTurn == true )
+     {
+     Rheadplus++;
+     Turn++;
+     }
+     else
+     {
+     Rheadplus--;
+     Turn--;
+     }
+     }
+     Rhead=Rhead+Rheadplus;
+     glRotatef(Rhead,0.0,1.0,0.0);
+     Rheadplus=0;
+     // end turn left-right for fan head
+
+     glTranslatef(0.0,0.0,-3.0);
+     cylinder(4,4,6);// silinder belakang kipas
+     cylinder(1,0.5,15);//silinder tonjolan di depan kipas
+     glRotatef(270,1.0,0.0,0.0);
+     if(Tolehpress==true)  // press down turn left-right head button
+     cylinder(0.3,0.5,6);
+     else // pull up turn left-right head button
+     cylinder(0.3,0.5,7);
+     glRotatef(90,1.0,0.0,0.0);
+         glPushMatrix();
+       glTranslatef(0.0,0.0,11);
+       glutWireTorus(5,7,10,64);
+       glutSolidTorus(0.5,12,10,64);
+       rotation_y+=rotation_y_plus;
+       if(rotation_y>359)rotation_y=0;
+       glRotatef(rotation_y,0.0,0.0,1.0);
+       bilah(3,10,3,5); // bilah(inner radius, outer radius, thickness, qty bilah)
+         glPopMatrix();
+       glPopMatrix();
+     glPopMatrix();
+     glRotatef(90,1.0,0.0,0.0);
+     glTranslatef(0.0,-1.0,-4);
+     blok(2,7,10);// blok bawah(papan kontrol)
+
+
+//lukman akhir
+
+
