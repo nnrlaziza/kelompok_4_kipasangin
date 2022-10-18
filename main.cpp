@@ -54,3 +54,56 @@
     glColorMaterial (GL_FRONT,GL_AMBIENT_AND_DIFFUSE);
     }
 
+
+//E1E121074 - MUHAMMAD AZRIEL SAKTIAWAN
+// LINE 61 SAMPAI 109
+
+//membuat method risize agar saat layar di maxzimize gambar mengikuti layar sehingga tidak merubah ukuran dari kipasnya
+    void resize(int width,int height)
+    {
+    screen_width=width;
+    screen_height=height;
+
+    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+    glViewport(0,0,screen_width,screen_height);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluPerspective(45.0f,(GLfloat)screen_width/(GLfloat)screen_height,1.0f,1000.0f);
+
+    glutPostRedisplay();
+    }
+
+    //buat method display(method penampilan gambar
+    void display(void)
+    {
+    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT); //membersihkan layar latar belakang
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+
+    glTranslatef(0.0,-15,-70);
+    glPushMatrix();
+    glRotatef(270,1.0,0.0,0.0);
+    rotate_All+=All_plus;
+    glRotatef(rotate_All,0.0,0.0,1.0);
+    cylinder(2.5,1.5,16); // cilinder btang bawah2
+    cylinder(2.5,2.5,6); // cilinder batang bawah1
+   glPushMatrix();
+   glTranslatef(0.0,0.0,14);
+    glRotatef(90,0.0,1.0,0.0);
+    Angguk+=Anggukplus; // page up page down
+    glRotatef(Angguk,0.0,0.0,1.0);
+        Anggukplus=0;
+     glPushMatrix();
+     glRotatef(270,0.0,1.0,0.0);
+     glTranslatef(0.0,0.0,1);
+     cylinder(0.5,1,4);// cilinder batang atas
+     glPopMatrix();
+    glutSolidTorus(1.5,2,6,16);
+    glTranslatef(0.0,0.0,-2);
+    cylinder(1,1,4.3);//silinder penghubung batang atas dan batang bawah
+    glTranslatef(0.0,0.0,2);
+    glRotatef(270,0.0,1.0,0.0);
+         glPushMatrix();
+         glTranslatef(0.0,0.0,10);
+         glRotatef(90,1.0,0.0,0.0);
+     //turn left-right for fan head  10/9/2003
