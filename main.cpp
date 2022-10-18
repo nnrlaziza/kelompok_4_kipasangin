@@ -107,7 +107,7 @@
          glTranslatef(0.0,0.0,10);
          glRotatef(90,1.0,0.0,0.0);
      //turn left-right for fan head  10/9/2003
-    
+
 
 //lukman awal
 //E1E121004 LA ODE LUKMANA
@@ -162,3 +162,61 @@
 //lukman akhir
 
 
+
+//E1E120096 WA ODE NAILA NTANGU
+//LINE 167-222
+
+     // speed selection   11/9/2003
+     glTranslatef(-6,1,14);
+     glRotatef(270,1.0,0.0,0.0);
+     glTranslatef(2.0,0.0,0.0);
+     glPushMatrix();
+     glRotatef(pressplus5,1.0,0.0,0.0);
+     blok(0.5,2,2); // untuk blok tombol off
+     glPopMatrix();
+     glTranslatef(2.0,0.0,0.0);
+     glPushMatrix();
+     glRotatef(pressplus1,1.0,0.0,0.0);
+     blok(0.5,2,2);// untuk blok tombil f1
+     glPopMatrix();
+     glTranslatef(2.0,0.0,0.0);
+     glPushMatrix();
+     glRotatef(pressplus2,1.0,0.0,0.0);
+     blok(0.5,2,2);//untuk blok tombol f2
+     glPopMatrix();
+     glTranslatef(2.0,0.0,0.0);
+     glPushMatrix();
+     glRotatef(pressplus3,1.0,0.0,0.0);
+     blok(0.5,2,2);// untuk blok tombol f3
+     glPopMatrix();
+     glTranslatef(2.0,0.0,0.0);
+     glPushMatrix();
+     glRotatef(pressplus4,1.0,0.0,0.0);
+     blok(0.5,2,2);//untuk blok tombolf4
+     glPopMatrix();
+     pressplus5=0;
+     //end of speed selection
+    glPopMatrix();
+
+    glFlush();
+    glutSwapBuffers();
+    }
+
+
+    void cylinder(float rbase,float rtop,float height)
+    {
+    float i;
+    glPushMatrix();
+    glTranslatef(0.0,0.0,-rbase/4);
+    glutSolidCone(rbase,0,32,4);//membuat objek kerucut
+    for(i=0;i<=height;i+=rbase/8)
+    {
+    glTranslatef(0.0,0.0,rbase/8);
+    glutSolidTorus(rbase/4,rbase-((i*(rbase-rtop))/height),16,16); //donat
+    }
+    glTranslatef(0.0,0.0,rbase/4);
+    glutSolidCone(rtop,0,32,4);
+    glPopMatrix();
+    }
+
+//line akhir naila
